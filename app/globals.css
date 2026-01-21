@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  /* Define your Emerald Green Brand Colors */
+  --color-brand-light: #ECFDF5;   /* Very light mint for backgrounds */
+  --color-brand-DEFAULT: #10B981; /* Your main Emerald Green */
+  --color-brand-dark: #064E3B;    /* Deep green for text */
+
+  /* Keep the fonts consistent */
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+/* Standard resets */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden; /* Critical for parallax to not break scrolling */
+}
