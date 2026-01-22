@@ -1,7 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowDown } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
   const ref = useRef(null);
@@ -10,83 +10,78 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Parallax: Text moves faster than mountains
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "150%"]);
+  // --- PARALLAX SETTINGS ---
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
+  const leafX = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const leafY = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+  const hill1Y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const hill4X = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+  const hill5X = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  
+  // Foreground moves UP. We increase the range slightly to make it more dynamic.
+  const foregroundY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
   return (
-    <div
-      ref={ref}
-      className="relative h-screen w-full overflow-hidden bg-brand-light flex items-center justify-center"
-    >
-      {/* 1. TEXT LAYER */}
-      <motion.div style={{ y: textY }} className="relative z-10 text-center px-4 mb-20">
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-        >
-            <h1 className="text-5xl md:text-8xl font-black text-brand-dark tracking-tighter uppercase">
-            YOGITA KUMARI
-            </h1>
-        </motion.div>
-        
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-        >
-            <h2 className="text-lg md:text-2xl font-medium text-brand-DEFAULT mt-4 tracking-[0.3em] uppercase">
-            UI/UX • ML • ART
-            </h2>
-            <p className="text-sm md:text-base text-gray-500 mt-2 tracking-widest uppercase">
-              Student at IIIT Manipur
-            </p>
-        </motion.div>
+    <div ref={ref} className="relative w-full h-screen overflow-hidden bg-white flex items-center justify-center">
+      {/* 1. HILL 1 (Back) */}
+      <motion.div style={{ y: hill1Y }} className="absolute inset-0 z-0">
+        <Image src="/parallax/hill1.png" alt="Hill 1" fill className="object-cover" priority />
       </motion.div>
 
-      {/* 2. BACKGROUND MOUNTAIN */}
-      <motion.div
-        style={{ y: backgroundY }}
-        className="absolute inset-x-0 bottom-0 z-0 w-full"
-      >
-        <svg
-          className="w-full h-auto text-emerald-200"
-          viewBox="0 0 1440 320"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="currentColor"
-            fillOpacity="0.6"
-            d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L0,320Z"
-          ></path>
-        </svg>
-      </motion.div>
-
-      {/* 3. FOREGROUND MOUNTAIN */}
-      <div className="absolute inset-x-0 bottom-0 z-20 w-full pointer-events-none">
-         <svg
-          className="w-full h-auto text-brand-DEFAULT"
-          viewBox="0 0 1440 320"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="currentColor"
-            d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L0,320Z"
-          ></path>
-        </svg>
+      {/* 2. HILL 2 */}
+      <div className="absolute inset-0 z-10">
+        <Image src="/parallax/hill2.png" alt="Hill 2" fill className="object-cover" priority />
       </div>
 
-      {/* Scroll Indicator */}
+      {/* 3. HILL 3 */}
+      <div className="absolute inset-0 z-20">
+        <Image src="/parallax/hill3.png" alt="Hill 3" fill className="object-cover" priority />
+      </div>
+
+      {/* 4. TEXT LAYER */}
+      <motion.div style={{ y: textY }} className="relative z-30 text-center translate-y-[-50%]">
+        <h1 className="text-[5rem] md:text-[6rem] font-bold text-[#171717] tracking-wide uppercase leading-none">
+          YOGITA KUMARI
+        </h1>
+        <h2 className="text-2xl md:text-4xl font-semibold text-[#ffffff] tracking-[0.5em] uppercase px-4 py-2 mt-2">
+          Designer & Engineer
+        </h2>
+      </motion.div>
+
+      {/* 5. SIDE HILLS */}
+      <motion.div style={{ x: hill4X }} className="absolute inset-0 z-40">
+        <Image src="/parallax/hill4.png" alt="Hill 4" fill className="object-cover" priority />
+      </motion.div>
+
+      <motion.div style={{ x: hill5X }} className="absolute inset-0 z-40">
+        <Image src="/parallax/hill5.png" alt="Hill 5" fill className="object-cover" priority />
+      </motion.div>
+
+      {/* 6. LEAF */}
+      <motion.div style={{ x: leafX, y: leafY }} className="absolute top-0 right-0 w-full h-full z-50 pointer-events-none">
+        <Image src="/parallax/leaf.png" alt="Leaf" fill className="object-cover" />
+      </motion.div>
+
+      {/* 7. FOREGROUND GROUP (Tree + Plant + Curtain Box) */}
+      {/* We group these so the "Curtain" moves exactly with the images */}
       <motion.div 
-        animate={{ y: [0, 10, 0] }} 
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 text-white flex flex-col items-center gap-2"
+        style={{ y: foregroundY }} 
+        className="absolute inset-0 z-50 pointer-events-none"
       >
-        <span className="text-[10px] tracking-widest uppercase opacity-80">Welcome</span>
-        <ArrowDown size={20} />
+        {/* Tree */}
+        <div className="absolute inset-0">
+             <Image src="/parallax/tree.png" alt="Tree" fill className="object-cover" priority />
+        </div>
+
+        {/* Plant - LIFTED UP slightly using 'bottom-[-1%]' instead of 0 if needed, 
+            but the main gap fix is the box below. */}
+        <div className="absolute inset-0">
+             <Image src="/parallax/plant.png" alt="Plant" fill className="object-cover" priority />
+        </div>
+
+        {/* --- THE FIX: EXTENSION BOX --- */}
+        {/* This box hangs below the image. As the image moves UP, this box slides up to cover the gap. */}
+        <div className="absolute top-[99%] left-0 w-full h-[50vh] bg-[#003329]" />
       </motion.div>
     </div>
   );

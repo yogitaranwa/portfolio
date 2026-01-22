@@ -1,25 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Define your Emerald Green Brand Colors */
-  --color-brand-light: #ECFDF5;   /* Very light mint for backgrounds */
-  --color-brand-DEFAULT: #10B981; /* Your main Emerald Green */
-  --color-brand-dark: #064E3B;    /* Deep green for text */
-
-  /* Keep the fonts consistent */
-  --font-sans: var(--font-geist-sans), sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  /* Define the new font variables */
+  --font-oswald: var(--font-oswald);
+  --font-lato: var(--font-lato);
+  
+  --color-brand-light: #ECFDF5;
+  --color-brand-DEFAULT: #10B981;
+  --color-brand-dark: #003329;
 }
 
-/* Standard resets */
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Force headings to use the Mountain Font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-oswald), sans-serif;
+  text-transform: uppercase; /* Mountains feel bigger in uppercase */
+  letter-spacing: 0.05em;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  overflow-x: hidden; /* Critical for parallax to not break scrolling */
+  font-family: var(--font-lato), sans-serif;
 }
