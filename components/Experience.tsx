@@ -9,16 +9,22 @@ const timeline = [
     desc: "Maintaining a strong GPA while leading the college design club. Specializing in AI/ML and Data Science.",
   },
   {
-    year: "OCT 2025 - DEC 2025",
+    year: "OCT 2025 - PRESENT",
     title: "UI/UX INTERN",
-    org: "REMOTE STARTUP",
-    desc: "Designed user flows and prototypes for a fintech product. Earned a stipend of 15k INR/month.",
+    org: "ALTBRIDGE PARTNERS",
+    desc: "Designed user flows and prototypes for a fintech product. Improved onboarding UX, boosting user retention by 15%.",
   },
   {
-    year: "2025",
-    title: "OPEN SOURCE",
-    org: "GITHUB / COMMUNITY",
-    desc: "Actively contributing to front-end libraries and participating in competitive programming contests.",
+    year: "JUN 2025 - AUG 2025",
+    title: "UI/UX INTERN",
+    org: "ALIVEHIRE",
+    desc: "Redesigned key interfaces for an HR platform using Figma. Conducted user testing to refine usability and visual design.",
+  },
+   {
+    year: "MAY 2025 - JULY 2025",
+    title: "SDE INTERN",
+    org: "LUMOVATE INTELLIGENCE",
+    desc: "Developed backend APIs using Node.js and Express for a healthcare app. Implemented database schemas in MongoDB.",
   },
 ];
 

@@ -37,13 +37,13 @@ export default function Contact() {
           </p>
 
           <div className="space-y-8">
-            <a href="mailto:yogita@example.com" className="flex items-center gap-6 text-white group cursor-pointer">
+            <a href="mailto:yogita2004ranwa@gmail.com" className="flex items-center gap-6 text-white group cursor-pointer">
               <div className="w-16 h-16 flex items-center justify-center bg-white/5 border border-white/10 group-hover:bg-[#10B981] group-hover:text-[#003329] transition-all duration-300">
                 <Mail size={28} />
               </div>
               <div>
                  <p className="text-xs text-[#10B981] font-bold uppercase tracking-widest mb-1">Email Me</p>
-                 <span className="text-2xl font-oswald tracking-wide">yogita@example.com</span>
+                 <span className="text-2xl font-oswald tracking-wide">yogita2004ranwa@gmail.com</span>
               </div>
             </a>
             

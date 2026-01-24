@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Figma, Terminal, Cpu, Palette, MapPin, Github, Linkedin, ArrowRight, MousePointer2 } from "lucide-react";
+import { Figma, Terminal, Cpu, Palette, MapPin, Github, Linkedin, ArrowRight, MousePointer2, Code, Brush } from "lucide-react";
 import Image from "next/image";
 
 // Firefly Component (Atmosphere)
@@ -77,8 +77,8 @@ export default function About() {
                 Download Resume <ArrowRight size={18} />
              </button>
              <div className="flex gap-3">
-                <a href="#" className="p-4 bg-white/5 border border-white/10 text-white hover:bg-[#10B981] hover:text-[#003329] transition-all"><Github size={20}/></a>
-                <a href="#" className="p-4 bg-white/5 border border-white/10 text-white hover:bg-[#10B981] hover:text-[#003329] transition-all"><Linkedin size={20}/></a>
+                <a href="https://github.com/yogitaranwa" className="p-4 bg-white/5 border border-white/10 text-white hover:bg-[#10B981] hover:text-[#003329] transition-all"><Github size={20}/></a>
+                <a href="https://www.linkedin.com/in/yogita-kumari-090277297/" className="p-4 bg-white/5 border border-white/10 text-white hover:bg-[#10B981] hover:text-[#003329] transition-all"><Linkedin size={20}/></a>
              </div>
           </div>
         </motion.div>
@@ -170,10 +170,13 @@ export default function About() {
            <div className="flex flex-wrap gap-3 justify-end">
               {[
                 { icon: Figma, label: "FIGMA" },
+                { icon: Palette, label: "CANVA" },
                 { icon: Terminal, label: "PYTHON" },
-                { icon: Cpu, label: "TENSORFLOW" },
-                { icon: Palette, label: "NEXT.JS" },
-                { icon: Github, label: "GIT" }
+                { icon: Github, label: "GIT" },
+                 { icon: Code, label: "C" },
+                 { icon: Code, label: "C++" },
+                 { icon: Cpu, label: "DSA" },
+                 { icon: Brush, label: "ADOBE" },
               ].map((tool, idx) => (
                  <div key={idx} className="flex items-center gap-2 bg-[#002b22] border border-[#10B981]/20 px-5 py-3 hover:border-[#10B981] hover:bg-[#10B981] group/tag transition-all cursor-default">
                     <tool.icon size={16} className="text-[#10B981] group-hover/tag:text-[#003329] transition-colors" />
