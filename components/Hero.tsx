@@ -39,7 +39,7 @@ export default function Hero() {
       </div>
 
       {/* 4. TEXT LAYER */}
-      <motion.div style={{ y: textY }} className="relative z-30 text-center translate-y-[-50%]">
+      <motion.div style={{ y: textY }} className="relative z-100 text-center translate-y-[-50%]">
         <h1 className="text-[5rem] md:text-[6rem] font-bold text-[#171717] tracking-wide uppercase leading-none">
           YOGITA KUMARI
         </h1>
