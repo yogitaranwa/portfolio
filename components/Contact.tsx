@@ -1,8 +1,35 @@
 "use client";
 import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Linkedin, Github, Instagram } from "lucide-react";
+import { Send, Mail, MapPin } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event: any) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    // --- IMPORTANT: ADD YOUR ACCESS KEY HERE ---
+    formData.append("access_key", "bddc57c2-5789-49d8-92ed-fee2e1e31d8a"); 
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Message Sent Successfully!");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
+
   return (
     <section id="contact" className="relative z-50 py-32 bg-[#003329] px-6 overflow-hidden">
       
@@ -61,16 +88,20 @@ export default function Contact() {
 
         {/* RIGHT: The Form */}
         <motion.form 
+          onSubmit={onSubmit} // <--- ADDED SUBMIT HANDLER
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-8 p-10 border-l border-white/10"
         >
+         
           <div className="space-y-2">
             <label className="text-xs font-bold text-[#10B981] uppercase tracking-widest">Your Name</label>
             <input 
               type="text" 
+              name="name" // <--- ADDED NAME ATTRIBUTE
+              required
               placeholder="ENTER NAME" 
               className="w-full bg-transparent border-b-2 border-white/20 p-4 text-white placeholder-white/20 focus:outline-none focus:border-[#10B981] transition-colors font-oswald tracking-wider text-xl"
             />
@@ -80,6 +111,8 @@ export default function Contact() {
             <label className="text-xs font-bold text-[#10B981] uppercase tracking-widest">Your Email</label>
             <input 
               type="email" 
+              name="email" // <--- ADDED NAME ATTRIBUTE
+              required
               placeholder="ENTER EMAIL" 
               className="w-full bg-transparent border-b-2 border-white/20 p-4 text-white placeholder-white/20 focus:outline-none focus:border-[#10B981] transition-colors font-oswald tracking-wider text-xl"
             />
@@ -88,15 +121,22 @@ export default function Contact() {
           <div className="space-y-2">
             <label className="text-xs font-bold text-[#10B981] uppercase tracking-widest">Message</label>
             <textarea 
+              name="message" // <--- ADDED NAME ATTRIBUTE
+              required
               rows={4}
               placeholder="TELL ME ABOUT YOUR PROJECT..." 
               className="w-full bg-transparent border-b-2 border-white/20 p-4 text-white placeholder-white/20 focus:outline-none focus:border-[#10B981] transition-colors font-oswald tracking-wider text-xl resize-none"
             />
           </div>
 
-          <button className="w-full py-6 bg-[#10B981] text-[#003329] font-bold text-xl uppercase tracking-widest hover:bg-white transition-all flex items-center justify-center gap-3 mt-4">
+          <button type="submit" className="w-full py-6 bg-[#10B981] text-[#003329] font-bold text-xl uppercase tracking-widest hover:bg-white transition-all flex items-center justify-center gap-3 mt-4">
             SEND MESSAGE <Send size={20} />
           </button>
+          
+          {/* Success/Error Message */}
+          <span className="block text-[#10B981] font-bold uppercase tracking-wider text-sm mt-4 text-center">
+            {result}
+          </span>
         </motion.form>
 
       </div>

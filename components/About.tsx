@@ -82,13 +82,13 @@ export default function About() {
                             Download Resume <ArrowRight size={18} />
                         </a>
                         <div className="flex gap-3">
-                            <a href="https://github.com/yogitaranwa" className="p-4 bg-white/5 border border-white/10 text-white hover:bg-[#10B981] hover:text-[#003329] transition-all"><Github size={20} /></a>
-                            <a href="https://www.linkedin.com/in/yogita-kumari-090277297/" className="p-4 bg-white/5 border border-white/10 text-white hover:bg-[#10B981] hover:text-[#003329] transition-all"><Linkedin size={20} /></a>
+                            <a href="https://github.com/yogitaranwa" target="_blank" className="p-4 bg-white/5 border border-white/10 text-white hover:bg-[#10B981] hover:text-[#003329] transition-all"><Github size={20} /></a>
+                            <a href="https://www.linkedin.com/in/yogita-kumari-090277297/" target="_blank" className="p-4 bg-white/5 border border-white/10 text-white hover:bg-[#10B981] hover:text-[#003329] transition-all"><Linkedin size={20} /></a>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* --- BLOCK 2: STATS (Spans 4 cols, 1 row) --- */}
+                
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
